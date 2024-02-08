@@ -22,5 +22,5 @@ class HelloController extends Controller
             'users' => $users,
         ]);
     }
-    
+
 }

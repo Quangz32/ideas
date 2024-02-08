@@ -3,8 +3,8 @@
     <form action="{{ route('ideas.store')}}" method="post">
         @csrf
         <div class="mb-3">
-            <textarea class="form-control" id="idea" rows="3" name="idea"></textarea>
-            @error('idea')
+            <textarea class="form-control" id="content" rows="3" name="content"></textarea>
+            @error('content')
                 <span class="fs-6 text-danger d-block mt-3">  {{$message}}</span>
             @enderror
         </div>
