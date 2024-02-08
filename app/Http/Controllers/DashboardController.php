@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function index()
     {
 
-        //If searching = true..
+        //If 'search'
 
         $ideas = Idea::orderBy('created_at', 'DESC');
 
