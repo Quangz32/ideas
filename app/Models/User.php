@@ -44,7 +44,12 @@ class User extends Authenticatable
     ];
 
     //QUANGZ ADDED BELOW CODE
-public function ideas(){
-    return $this->hasMany(Idea::class);
-}
+    public function ideas()
+    {
+        return $this->hasMany(Idea::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
