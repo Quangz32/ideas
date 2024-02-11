@@ -35,9 +35,9 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 // });
 
 //Automatic create routes, replace for code above
-Route::resource('ideas',IdeaController::class)->except(['index','create','show'])->middleware('auth');
-Route::resource('ideas',IdeaController::class)->only(['show']);
-Route::resource('ideas.comments',CommentController::class)->only(['store'])->middleware('auth');
+Route::resource('ideas', IdeaController::class)->except(['index', 'create', 'show'])->middleware('auth');
+Route::resource('ideas', IdeaController::class)->only(['show']);
+Route::resource('ideas.comments', CommentController::class)->only(['store'])->middleware('auth');
 
 Route::get('/terms', function () {
     return view('terms');
