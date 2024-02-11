@@ -20,31 +20,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::post('/ideas',[IdeaController::class, 'store'])->name('ideas.store');
+// Route::group(['prefix' => 'ideas/', 'as' => 'ideas.'], function () {
+//     Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('show');
 
-Route::get('/ideas/{idea}',[IdeaController::class, 'show'])->name('ideas.show');
+//     Route::group(['middleware' => ['auth']], function () {
 
-Route::get('/ideas/{idea}/edit',[IdeaController::class, 'edit'])->name('ideas.edit')->middleware('auth');
+//         Route::post('/', [IdeaController::class, 'store'])->name('store');
+//         Route::get('/{idea}/edit', [IdeaController::class, 'edit'])->name('edit');
+//         Route::put('/{idea}/update', [IdeaController::class, 'update'])->name('update');
+//         Route::delete('/{idea}', [IdeaController::class, 'destroy'])->name('destroy');
+//         Route::post('/{idea}/comments', [CommentController::class, 'store'])->name('comments.store');
 
-Route::put('/ideas/{idea}/update',[IdeaController::class, 'update'])->name('ideas.update')->middleware('auth');
+//     });
+// });
 
-Route::delete('ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
+//Automatic create routes, replace for code above
+Route::resource('ideas',IdeaController::class)->except(['index','create','show'])->middleware('auth');
+Route::resource('ideas',IdeaController::class)->only(['show']);
+Route::resource('ideas.comments',CommentController::class)->only(['store'])->middleware('auth');
 
-Route::post('/ideas/{idea}/comments',[CommentController::class, 'store'])->name('ideas.comments.store')->middleware('auth');
-
-Route::get('/register',[AuthController::class, 'register'])->name('register');
-Route::post('/register',[AuthController::class,'store']);
-
-Route::get('/login',[AuthController::class, 'login'])->name('login');
-Route::post('/login',[AuthController::class, 'authenticate']);
-
-Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
-///////
-
-Route::get('/terms', function(){
+Route::get('/terms', function () {
     return view('terms');
 });
-
-
-
-Route::get('/hello',[HelloController::class, 'index']);

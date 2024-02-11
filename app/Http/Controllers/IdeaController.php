@@ -26,7 +26,7 @@ class IdeaController extends Controller
     public function destroy(Idea $idea)
     {
 
-        if (auth()->id() !== $idea->user_id){
+        if (auth()->id() !== $idea->user_id) {
             abort(404);
         }
 
@@ -52,7 +52,7 @@ class IdeaController extends Controller
 
     public function edit(Idea $idea)
     {
-        if (auth()->id() !== $idea->user_id){
+        if (auth()->id() !== $idea->user_id) {
             abort(404);
         }
 
@@ -63,7 +63,7 @@ class IdeaController extends Controller
     public function update(Idea $idea)
     {
 
-        if (auth()->id() !== $idea->user_id){
+        if (auth()->id() !== $idea->user_id) {
             abort(404);
         }
 
@@ -73,6 +73,6 @@ class IdeaController extends Controller
         $idea->content = request()->get('content', '');
         $idea->save();
 
-        return redirect()->route('ideas.show',$idea->id)->with('success','Idea updated successfully!');
+        return redirect()->route('ideas.show', $idea->id)->with('success', 'Idea updated successfully!');
     }
 }
