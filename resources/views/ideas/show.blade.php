@@ -10,7 +10,7 @@
             <hr>
 
             <div class="mt-3">
-                @include('shared.idea_card')
+                @include('ideas.shared.idea_card')
             </div>
 
 
