@@ -26,17 +26,17 @@
                                 href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                         </li>
                     @endif
-                        <li class="nav-item">
-                            <a class="{{ Route::is('profile') ? 'active' : '' }} nav-link"
-                                href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="{{ route('logout') }}" method='post'>
-                                @csrf
-                                <button class="btn btn-danger" type="submit">Logout</button>
-                            </form>
-                        </li>
-                    @endauth
+                    <li class="nav-item">
+                        <a class="{{ Route::is('profile') ? 'active' : '' }} nav-link"
+                            href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method='post'>
+                            @csrf
+                            <button class="btn btn-danger" type="submit">Logout</button>
+                        </form>
+                    </li>
+                @endauth
 
             </ul>
         </div>

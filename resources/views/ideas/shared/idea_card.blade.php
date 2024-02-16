@@ -12,15 +12,20 @@
                 </div>
             </div>
             <div>
-                <form action="{{ route('ideas.destroy', ['idea' => $idea->id]) }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <a class="mx-2" href="{{ route('ideas.show', $idea->id) }}">View</a>
-                    @if (Auth::id() == $idea->user->id)
-                        <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
-                        <button class="btn btn-danger btn-sm">X</button>
-                    @endif
-                </form>
+                @auth()
+
+                    @can('idea.edit', $idea)
+                        <form action="{{ route('ideas.destroy', ['idea' => $idea->id]) }}" method="post">
+                            <a class="mx-2" href="{{ route('ideas.show', $idea->id) }}">View</a>
+                            @csrf
+                            @method('delete')
+                            <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
+                            <button class="btn btn-danger btn-sm">X</button>
+
+                        </form>
+                    @endcan
+                @endauth
+
             </div>
         </div>
     </div>
