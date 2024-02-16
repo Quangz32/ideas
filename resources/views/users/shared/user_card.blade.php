@@ -12,11 +12,11 @@
             </div>
             <div>
                 @auth()
-                    @if ($user->id == Auth::id())
+                    @can('update', $user)
                         <div>
                             <a href="{{ route('users.edit', $user->id) }}">Edit</a>
                         </div>
-                    @endif
+                    @endcan
                 @endauth
             </div>
         </div>
@@ -29,12 +29,12 @@
             </p>
             @include('users.shared.user_stats')
             @auth()
-                @if (Auth::id() != $user->id)
+                @if (Auth::user()->isNot($user))
                     <div class="mt-3">
                         @if (Auth::user()->follows($user))
                             <form action="{{ route('users.unfollow', $user->id) }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-sm"> Unfollow </button>
+                                <button type="submit" class="btn btn-danger btn-sm"> Unfollow </bFutton>
                             </form>
                         @else
                             <form action="{{ route('users.follow', $user->id) }}" method="POST">
