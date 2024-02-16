@@ -2,8 +2,11 @@
     <form action="{{ route('ideas.comments.store', $idea->id) }}" method="post">
         @csrf
         <div class="mb-3">
-            <textarea name='content' class="fs-6 form-control" rows="1"></textarea>
+            <textarea name="content" id="content"class="fs-6 form-control" rows="1"></textarea>
         </div>
+        @error('content')
+            <span class="fs-6 text-danger d-block mt-3"> {{ $message }}</span>
+        @enderror
         <div>
             <button type='submit' class="btn btn-primary btn-sm"> Post Comment </button>
         </div>

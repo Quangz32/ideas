@@ -5,14 +5,13 @@
             @method('put')
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
-                    <img style="width:150px" class="me-3 avatar-sm rounded-circle"
-                        src="{{$user->getImageURL()}}"
+                    <img style="width:150px" class="me-3 avatar-sm rounded-circle" src="{{ $user->getImageURL() }}"
                         alt="{{ $user->name }}">
                     <div>
                         @if ($editing ?? false)
                             <input name="name" type="text" value="{{ $user->name }}" class="form-control">
                             @error('name')
-                                <span class="fs-6 text-danger"{{ $message }}></span>
+                                <span class="fs-6 text-danger">{{ $message }}</span>
                             @enderror
                         @else
                             <h3 class="card-title mb-0"><a href="#"> {{ $user->name }}
@@ -39,9 +38,9 @@
             <div class="px-2 mt-4">
                 <h5 class="fs-5"> Bio : </h5>
                 <div class="mb-3">
-                    <textarea class="form-control" name="bio" id="bio" rows="3">{{$user->bio}}</textarea>
+                    <textarea class="form-control" name="bio" id="bio" rows="3">{{ $user->bio }}</textarea>
                     @error('bio')
-                        <span class="d-block fs-6 text-danger mt-2"{{ $message }}></span>
+                        <span class="d-block fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-dark btn-sm mb-2">Save</button>
