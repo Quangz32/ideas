@@ -11,17 +11,15 @@
                         </a></h5>
                 </div>
             </div>
-            <div>
+            <div class="d-flex">
+                <a href="{{ route('ideas.show', $idea->id) }}">View</a>
                 @auth()
-
-                    @can('idea.edit', $idea)
+                    @can('update', $idea)
+                        <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
                         <form action="{{ route('ideas.destroy', ['idea' => $idea->id]) }}" method="post">
-                            <a class="mx-2" href="{{ route('ideas.show', $idea->id) }}">View</a>
                             @csrf
                             @method('delete')
-                            <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
-                            <button class="btn btn-danger btn-sm">X</button>
-
+                            <button class="ms-1 btn btn-danger btn-sm">X</button>
                         </form>
                     @endcan
                 @endauth
