@@ -10,6 +10,7 @@ use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::post('ideas/{idea}/like',[IdeaLikeController::class, 'like'])->middleware
 Route::post('ideas/{idea}/unlike',[IdeaLikeController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
 
 Route::get('/feed', FeedController::class)->middleware('auth')->name('feed');
+
+Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware('auth','admin')->name('admin.dashboard');
 
 
 Route::get('/terms', function () {
