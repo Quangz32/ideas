@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
-@section('title','Admin Dashboard')
+@section('title', 'Admin Dashboard')
 
 @section('content')
-<h1>THIS IS ADMIN PAGE</h1>
+    <h1>Coming soon</h1>
 @endsection
